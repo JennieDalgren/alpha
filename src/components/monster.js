@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
+import LottieView from 'lottie-react-native'
+
 import { StyleSheet, Image, Modal, Dimensions } from 'react-native'
 import { monsters } from '../consts/monsters'
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
-const Monster = ({ letter, visible }) => {
-  console.log('letter', letter)
-  const monster = `../../assets/monster-${letter}.jpg`
+class Monster extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-  return (
-    <Modal animationType='none' transparent={false} visible={visible}>
-      <Image
-        style={styles.monsterImg}
-        source={monsters[letter]}
-        resizeMode='contain'
-      />
-    </Modal>
-  )
+  render() {
+    const { visible, letter } = this.props
+    return (
+      <Modal animationType='none' transparent={false} visible={visible}>
+        <LottieView autoPlay loop source={monsters[letter]} />
+        {/* <Image
+          style={styles.monsterImg}
+          source={this.state.monsters[letter]}
+          resizeMode='contain'
+        /> */}
+      </Modal>
+    )
+  }
 }
 
 export default Monster
