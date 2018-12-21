@@ -6,30 +6,62 @@ import { upperLetters, lowerLetters } from '../consts/letters'
 export default class LettersScreen extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      upper: 0,
+      lower: 0
+    }
   }
-  // _checkLetter = () => {
-  //   if (this._carousel) {
-  //     console.log('index?', this._carousel.currentIndex)
-  //   }
-  //   console.log('screen')
-  //   // pos === 'lower'
-  //   //   ? this.setState({ lower: slideIndex })
-  //   //   : this.setState({ upper: slideIndex })
 
-  //   // console.log('upper vs lower', upper, lower)
+  _setStates = () => {
+    console.log('set states', this.main, this.state)
+    if (this._carousel) {
+      const theIndex = this._carousel.currentIndex
+      console.log('the index', theIndex)
+      if (this.props && this.props.up) {
+        console.log('new upper state should be', theIndex)
+        this.setState({
+          upper: theIndex,
+          lower: this.state.lower
+        })
+      } else if (this.props && this.props.down) {
+        console.log('new LOWER state should be', theIndex)
+        this.setState({
+          lower: theIndex,
+          upper: this.state.upper
+        })
+      }
 
-  //   // setTimeout(() => {
-  //   //   if (upper === lower) {
-  //   //     console.log('ITS A MATCH')
-  //   //   }
-  //   // }, 500)
-  // }
+      this._compareLetters()
+    }
+  }
+
+  _compareLetters = () => {
+    setTimeout(() => {
+      console.log('stateeee', this.state)
+      if (this.state.upper === this.state.lower) {
+        console.log('ITS A MATCH')
+      }
+    }, 500)
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <LetterCarousel data={upperLetters} upper />
-        <LetterCarousel data={lowerLetters} />
+      <View
+        style={styles.container}
+        ref={ref => {
+          this.main = ref
+        }}
+      >
+        <LetterCarousel
+          data={upperLetters}
+          up
+          onSnapToItem={() => this._setStates('up')}
+        />
+        <LetterCarousel
+          data={lowerLetters}
+          down
+          onSnapToItem={() => console.log('index', this._carousel.currentIndex)}
+        />
       </View>
     )
   }

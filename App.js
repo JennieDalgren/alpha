@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import LettersScreen from './src/screens/lettersScreen'
+import LetterCarousel from './src/components/carousel'
 
 export default class App extends Component {
   render() {
-    return <LettersScreen />
+    return <LetterCarousel />
   }
 }
 

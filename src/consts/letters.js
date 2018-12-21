@@ -1,5 +1,5 @@
 export const upperLetters = [
-  { l: 'a', bg: '#ffb3ba' },
+  { l: require('../../assets/a-upper.png'), bg: '#ffb3ba' },
   { l: 'b', bg: '#ffdfba' },
   { l: 'c', bg: '#ffffba' },
   { l: 'd', bg: '#baffc9' },
@@ -28,7 +28,7 @@ export const upperLetters = [
 ]
 
 export const lowerLetters = [
-  { l: 'a', bg: '#ffb3ba' },
+  { l: require('../../assets/a-lower.png'), bg: '#ffb3ba' },
   { l: 'b', bg: '#ffdfba' },
   { l: 'c', bg: '#ffffba' },
   { l: 'd', bg: '#baffc9' },
