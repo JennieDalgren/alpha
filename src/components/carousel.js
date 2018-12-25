@@ -44,13 +44,31 @@ class LetterCarousel extends Component {
 
   _renderUpperLetter = ({ item, index }) => (
     <View style={[styles.upperContainer, { backgroundColor: item.bg }]}>
-      <Image source={item.l} resizeMode='contain' />
+      <Image
+        source={item && item.l}
+        style={{
+          flex: 1,
+          position: 'absolute',
+          width: '100%',
+          height: '200%',
+          top: 0
+        }}
+      />
     </View>
   )
 
   _renderLowerLetter = ({ item, index }) => (
     <View style={[styles.lowerContainer, { backgroundColor: item.bg }]}>
-      <Image source={item.l} resizeMode='contain' />
+      <Image
+        source={item && item.l}
+        style={{
+          flex: 1,
+          position: 'absolute',
+          width: '100%',
+          height: '200%',
+          bottom: 0
+        }}
+      />
     </View>
   )
 
